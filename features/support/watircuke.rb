@@ -124,24 +124,25 @@ module Watircuke
     end
   end
   
+  # def find_select_list_by_index(text, type)
+  #     @browser.select_list(:index, type).select(text) unless @browser.select_list(:index, type).exists? == false
+  # end
+  
   def find_select_list(text, type)
     if @browser.select_list(:id, type).exists? then
        @browser.select_list(:id, type).select(text)
-
-    elsif @browser.select_list(:name, type).exists? then
-          @browser.select_list(:name, type).select(text)
-
-    elsif @browser.select_list(:value, type).exists? then
-          @browser.select_list(:value, type).select(text)
-
-    elsif @browser.select_list(:text, type).exists? then
-          @browser.select_list(:text, type).select(text)
-
-    elsif @browser.select_list(:index, type).exists? then
-          @browser.select_list(:index, type).select(text)
-
-    elsif @browser.select_list(:class, /(^|\s)#{type}(\s|$)/).exists? then
-          @browser.select_list(:class, /(^|\s)#{type}(\s|$)/).set(text)
+    elsif 
+       @browser.select_list(:class, /(^|\s)#{type}(\s|$)/).exists? then
+       @browser.select_list(:class, /(^|\s)#{type}(\s|$)/).select(text)
+    elsif 
+       @browser.select_list(:name, type).exists? then
+       @browser.select_list(:name, type).select(text)
+    elsif 
+       @browser.select_list(:value, type).exists? then
+       @browser.select_list(:value, type).select(text)
+    elsif 
+       @browser.select_list(:text, type).exists? then
+       @browser.select_list(:text, type).select(text)
     else
       fail("Sorry, I wasn't able to find the " + "'#{type}'" + " element ")
     end

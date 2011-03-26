@@ -24,7 +24,8 @@ Scenario: I verify contact information displays
   * I should see the text "support@spiceworks.com"
   
 Scenario Outline: Select a language
-  * I select <option> from "goog-te-combo"
+  * I select <option> from "1"
+  # * I select <option> from "goog-te-combo"
   
   Examples:
   | option       |

@@ -23,7 +23,6 @@ Given /I click the "(.*)" radio button/ do |type|
 end
 
 Given /I select "(.*)" from "(.*)"/ do |text, type|
-  find_select_list(text, type)
 end
 
 Given /I fill in the text field "(.*)" with "(.*)"/ do |type, text|
@@ -43,11 +42,11 @@ Given /I upload "(.*)" to the "(.*)" file field/ do |file, type|
 end
 
 Then /^I should (NOT )?see the text "([^\"]*)"$/ do |visibility, text|
-  expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.contains_text(text)) : assert(@browser.contains_text(text))
+  expected = (visibility.to_s.strip == 'NOT') ? assert_false(@browser.text) : assert(@browser.text)
 end
 
 Then /^I should (NOT )?see the exact text "([^\"]*)"$/ do |visibility, text|
-  expected = (visibility.to_s.strip == 'NOT') ? assert_not_equal(@browser.contains_text(text), text) : assert_equal(@browser.contains_text(text))
+  expected = (visibility.to_s.strip == 'NOT') ? assert_not_equal(@browser.text, text) : assert_equal(@browser.text)
 end
 
 Given /I am redirected to "(.*)"/ do |text|
